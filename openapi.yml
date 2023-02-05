@@ -205,6 +205,3 @@ paths:
                               type: string
                               description: "乗り場"
                               example: "1番乗り場"
-
-
-                        
