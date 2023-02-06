@@ -79,7 +79,7 @@ paths:
                                         description: "乗り場"
                                         example: "1番乗り場"
 
-  "/bus/time":
+  "/nextbus":
     get:
       description: Returns nextbus info
       parameters:
@@ -120,15 +120,11 @@ paths:
                           type: string
                           description: "バスの方向"
                           example: "立命館大学"
-                        via: 
-                          type: string
-                          description: "経由"
-                          example: "金閣寺"
                         delay:
                           type: string
                           description: "定時運行かを示す(kicVerではレガシー)"
                           example: "定時運行"
-                        busname:
+                        bus_name:
                           type: string
                           description: "バスの名前"
                           example: "快速立命館号系統"
