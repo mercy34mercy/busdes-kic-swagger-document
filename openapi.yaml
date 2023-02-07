@@ -5,6 +5,9 @@ info:
   description: "This is busdes kic API"
   version: "1.0.0"
 
+servers:
+  - url: busdes-kic-api-o7ro75a75a-an.a.run.app
+
 paths:
   "/timetable/multi":
     get:
@@ -46,7 +49,7 @@ paths:
                                   items: 
                                     type: object
                                     properties:
-                                      via:
+                                      bus_name:
                                         type: string
                                         description: "バスの名前"
                                         example: "12号系統"
@@ -66,7 +69,7 @@ paths:
                                   items: 
                                     type: object
                                     properties:
-                                      via:
+                                      bus_name:
                                         type: string
                                         description: "バスの名前"
                                         example: "12号系統"
@@ -169,7 +172,7 @@ paths:
                         items: 
                           type: object
                           properties:
-                            via:
+                            bus_name:
                               type: string
                               description: "バスの名前"
                               example: "12号系統"
@@ -189,7 +192,7 @@ paths:
                         items: 
                           type: object
                           properties:
-                            via:
+                            bus_name:
                               type: string
                               description: "バスの名前"
                               example: "12号系統"
