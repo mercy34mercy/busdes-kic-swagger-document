@@ -137,7 +137,7 @@ paths:
                           format: int
                           description: "目的地までの所要時間"
                           example: 20
-  "/bustime":
+  "/timetable":
     get:
       description: Returns timetable
       parameters:
