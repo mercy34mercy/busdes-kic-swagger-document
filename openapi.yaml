@@ -130,6 +130,10 @@ paths:
                           type: string
                           description: "バスの名前"
                           example: "快速立命館号系統"
+                        scheduled_time:
+                          type: string
+                          description: "定時の到着時刻"
+                          example: "12:20"
                         bus_stop:
                           type: string
                           description: "バス停の情報"
