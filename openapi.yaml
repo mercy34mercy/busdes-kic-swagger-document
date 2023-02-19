@@ -43,8 +43,6 @@ paths:
                             weekdays:
                               type: object
                               additionalProperties:
-                                  type: array
-                                  items: 
                                     type: object
                                     properties:
                                       bus_name:
@@ -62,8 +60,6 @@ paths:
                             holidays:
                               type: object
                               additionalProperties:
-                                  type: array
-                                  items: 
                                     type: object
                                     properties:
                                       bus_name:
@@ -167,38 +163,34 @@ paths:
                   weekdays:
                     type: object
                     additionalProperties:
-                      type: array
-                      items: 
-                        type: object
-                        properties:
-                          bus_name:
-                            type: string
-                            description: "バスの名前"
-                            example: "12号系統"
-                          min:
-                            type: string
-                            description: "到着時刻の分"
-                            example: "12"
-                          bus_stop:
-                            type: string
-                            description: "乗り場"
-                            example: "1番乗り場"
+                      type: object
+                      properties:
+                        bus_name:
+                          type: string
+                          description: "バスの名前"
+                          example: "12号系統"
+                        min:
+                          type: string
+                          description: "到着時刻の分"
+                          example: "12"
+                        bus_stop:
+                          type: string
+                          description: "乗り場"
+                          example: "1番乗り場"
                   holidays:
                     type: object
                     additionalProperties:
-                      type: array
-                      items: 
-                        type: object
-                        properties:
-                          bus_name:
-                            type: string
-                            description: "バスの名前"
-                            example: "12号系統"
-                          min:
-                            type: string
-                            description: "到着時刻の分"
-                            example: "12"
-                          bus_stop:
-                            type: string
-                            description: "乗り場"
-                            example: "1番乗り場"
+                      type: object
+                      properties:
+                        bus_name:
+                          type: string
+                          description: "バスの名前"
+                          example: "12号系統"
+                        min:
+                          type: string
+                          description: "到着時刻の分"
+                          example: "12"
+                        bus_stop:
+                          type: string
+                          description: "乗り場"
+                          example: "1番乗り場"
