@@ -6,7 +6,7 @@ info:
   version: "1.0.0"
 
 servers:
-  - url: busdes-kic-api-o7ro75a75a-an.a.run.app
+  - url: https://busdes-kic.mercy34.workers.dev
 
 paths:
   "/timetable/multi":
@@ -43,37 +43,11 @@ paths:
                             weekdays:
                               type: object
                               additionalProperties:
-                                    type: object
-                                    properties:
-                                      bus_name:
-                                        type: string
-                                        description: "バスの名前"
-                                        example: "12号系統"
-                                      min:
-                                        type: string
-                                        description: "到着時刻の分"
-                                        example: "12"
-                                      bus_stop:
-                                        type: string
-                                        description: "乗り場"
-                                        example: "1番乗り場"
+                                  $ref: '#/components/schemas/timetable'
                             holidays:
                               type: object
                               additionalProperties:
-                                    type: object
-                                    properties:
-                                      bus_name:
-                                        type: string
-                                        description: "バスの名前"
-                                        example: "12号系統"
-                                      min:
-                                        type: string
-                                        description: "到着時刻の分"
-                                        example: "12"
-                                      bus_stop:
-                                        type: string
-                                        description: "乗り場"
-                                        example: "1番乗り場"
+                                  $ref: '#/components/schemas/timetable'
   "/nextbus":
     get:
       description: Returns nextbus info
@@ -96,46 +70,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  approachinfo:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        more_min:
-                          type: string
-                          description: "後どれくらいで到着するか"
-                          example: "約20分後に到着"
-                        real_arrival_time:
-                          type: string
-                          description: "到着時刻"
-                          example: "12:20"
-                        direction:
-                          type: string
-                          description: "バスの方向"
-                          example: "立命館大学"
-                        delay:
-                          type: string
-                          description: "定時運行かを示す(kicVerではレガシー)"
-                          example: "定時運行"
-                        bus_name:
-                          type: string
-                          description: "バスの名前"
-                          example: "快速立命館号系統"
-                        scheduled_time:
-                          type: string
-                          description: "定時の到着時刻"
-                          example: "12:20"
-                        bus_stop:
-                          type: string
-                          description: "バス停の情報"
-                          example: "1"
-                        required_time:
-                          type: integer
-                          format: int
-                          description: "目的地までの所要時間"
-                          example: 20
+                    $ref: '#/components/schemas/approachinfo'
   "/timetable":
     get:
       description: Returns timetable
@@ -163,34 +98,68 @@ paths:
                   weekdays:
                     type: object
                     additionalProperties:
-                      type: object
-                      properties:
-                        bus_name:
-                          type: string
-                          description: "バスの名前"
-                          example: "12号系統"
-                        min:
-                          type: string
-                          description: "到着時刻の分"
-                          example: "12"
-                        bus_stop:
-                          type: string
-                          description: "乗り場"
-                          example: "1番乗り場"
+                      $ref: '#/components/schemas/timetable'
                   holidays:
                     type: object
                     additionalProperties:
-                      type: object
-                      properties:
-                        bus_name:
-                          type: string
-                          description: "バスの名前"
-                          example: "12号系統"
-                        min:
-                          type: string
-                          description: "到着時刻の分"
-                          example: "12"
-                        bus_stop:
-                          type: string
-                          description: "乗り場"
-                          example: "1番乗り場"
+                      $ref: '#/components/schemas/timetable'
+components:
+  schemas:
+    timetable:
+      type: array
+      items: 
+        type: object
+        properties:
+          bus_name:
+            type: string
+            description: "バスの名前"
+            example: "12号系統"
+          min:
+            type: string
+            description: "到着時刻の分"
+            example: "12"
+          bus_stop:
+            type: string
+            description: "乗り場"
+            example: "1番乗り場"
+    approachinfo:
+      type: object
+      properties:
+        approachinfo:
+          type: array
+          items:
+            type: object
+            properties:
+              more_min:
+                type: string
+                description: "後どれくらいで到着するか"
+                example: "約20分後に到着"
+              real_arrival_time:
+                type: string
+                description: "到着時刻"
+                example: "12:20"
+              direction:
+                type: string
+                description: "バスの方向"
+                example: "立命館大学"
+              delay:
+                type: string
+                description: "定時運行かを示す(kicVerではレガシー)"
+                example: "定時運行"
+              bus_name:
+                type: string
+                description: "バスの名前"
+                example: "快速立命館号系統"
+              scheduled_time:
+                type: string
+                description: "定時の到着時刻"
+                example: "12:20"
+              bus_stop:
+                type: string
+                description: "バス停の情報"
+                example: "1"
+              required_time:
+                type: integer
+                format: int
+                description: "目的地までの所要時間"
+                example: 20
